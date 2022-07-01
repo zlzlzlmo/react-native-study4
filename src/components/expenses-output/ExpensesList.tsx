@@ -8,14 +8,15 @@ import {
 import React from "react";
 import { IExpense } from "./ExpensesOutput";
 import { FlatList } from "react-native-gesture-handler";
+import ExpenseItem from "./ExpenseItem";
 
 interface ExpensesListProps {
   expenses: IExpense[];
 }
-
-const renderExpenseItem = (renderItem: ListRenderItemInfo<IExpense>) => (
-  <Text>{renderItem.item.description}</Text>
-);
+const renderExpenseItem = (renderItem: ListRenderItemInfo<IExpense>) => {
+  const { description, amount, date } = renderItem.item;
+  return <ExpenseItem description={description} amount={amount} date={date} />;
+};
 
 const ExpensesList = ({ expenses }: ExpensesListProps) => {
   return (
