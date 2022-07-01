@@ -11,6 +11,9 @@ import { AntDesign } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Bottom = createBottomTabNavigator();
 
+// * Navigator에 screenOptions 를 사용하여 자식 스크린들에 공통 스타일링을 적용 할 수 있다
+// * headerStyle, tabBarStyle를 통해 헤더와 하단 탭바 스타일 적용 가능
+// * tintColor는 text color
 const ExpenseOverview = () => {
   return (
     <Bottom.Navigator
@@ -23,6 +26,7 @@ const ExpenseOverview = () => {
           backgroundColor: GlobalStyles.colors.subColor3,
         },
         tabBarActiveTintColor: GlobalStyles.colors.blackColor,
+        tabBarInactiveTintColor: GlobalStyles.colors.whiteColor,
       }}
     >
       <Bottom.Screen
