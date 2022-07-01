@@ -3,7 +3,14 @@ import React from "react";
 import ExpensesSummary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
 
-const DUMMY_EXPENSES = [
+export interface IExpense {
+  id: string;
+  description: string;
+  amount: number;
+  date: Date;
+}
+
+const DUMMY_EXPENSES: IExpense[] = [
   {
     id: "el",
     description: "신발",
@@ -31,8 +38,8 @@ interface ExpensesOutputProps {
 const ExpensesOutput = ({ expensesPeriod }: ExpensesOutputProps) => {
   return (
     <View>
-      <ExpensesSummary expenses={DUMMY_EXPENSES} periodName="" />
-      <ExpensesList />
+      <ExpensesSummary expenses={DUMMY_EXPENSES} periodName="지난 7일 간" />
+      <ExpensesList expenses={DUMMY_EXPENSES} />
     </View>
   );
 };
