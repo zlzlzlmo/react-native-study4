@@ -9,8 +9,21 @@ import RecentExpenses from "./src/screens/RecentExpenses";
 import { GlobalStyles } from "./src/constants/styles";
 import { AntDesign } from "@expo/vector-icons";
 import IconButton from "./src/components/ui/IconButton";
-const Stack = createStackNavigator();
-const Bottom = createBottomTabNavigator();
+
+export type RootStackParamList = {
+  ManageExpenses: undefined;
+};
+
+export type RootBottomParamList = {
+  AllExpenses: undefined;
+  RecentExpenses: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
+const Bottom = createBottomTabNavigator<RootBottomParamList>();
+
+// * useNavagation에는 StackNavigationProps<RootStackParamLst>
+// * screen에는 StackScreenProps<RootStackParamList,"name">
 
 // * Navigator에 screenOptions 를 사용하여 자식 스크린들에 공통 스타일링을 적용 할 수 있다
 // * headerStyle, tabBarStyle를 통해 헤더와 하단 탭바 스타일 적용 가능
