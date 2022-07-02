@@ -14,8 +14,15 @@ interface ExpensesListProps {
   expenses: IExpense[];
 }
 const renderExpenseItem = (renderItem: ListRenderItemInfo<IExpense>) => {
-  const { description, amount, date } = renderItem.item;
-  return <ExpenseItem description={description} amount={amount} date={date} />;
+  const { id, description, amount, date } = renderItem.item;
+  return (
+    <ExpenseItem
+      id={id}
+      description={description}
+      amount={amount}
+      date={date}
+    />
+  );
 };
 
 const ExpensesList = ({ expenses }: ExpensesListProps) => {

@@ -7,15 +7,18 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
 
 interface ExpenseItemProps {
+  id: string;
   description: string;
   amount: number;
   date: Date;
 }
 
-const ExpenseItem = ({ description, amount, date }: ExpenseItemProps) => {
+const ExpenseItem = ({ id, description, amount, date }: ExpenseItemProps) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const expensePressHandler = () => {
-    navigation.navigate("ManageExpenses");
+    navigation.navigate("ManageExpenses", {
+      expenseId: id,
+    });
   };
   return (
     <Pressable

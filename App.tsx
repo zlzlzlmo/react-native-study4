@@ -11,7 +11,9 @@ import { AntDesign } from "@expo/vector-icons";
 import IconButton from "./src/components/ui/IconButton";
 
 export type RootStackParamList = {
-  ManageExpenses: undefined;
+  ManageExpenses: {
+    expenseId: string;
+  };
 };
 
 export type RootBottomParamList = {
