@@ -108,7 +108,6 @@ export default function App() {
             name="ManageExpenses"
             component={ManageExpenses}
             options={{
-              headerTitle: "비용 관리",
               headerBackTitleVisible: false,
             }}
           />
