@@ -21,11 +21,17 @@ const ManageExpenses = ({ route, navigation }: Props) => {
     });
   }, [navigation, isEditing]);
 
-  const deleteExpenseHandler = () => {};
+  const deleteExpenseHandler = () => {
+    navigation.goBack();
+  };
 
-  const cancelHandler = () => {};
+  const cancelHandler = () => {
+    navigation.goBack();
+  };
 
-  const confirmHandler = () => {};
+  const confirmHandler = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
