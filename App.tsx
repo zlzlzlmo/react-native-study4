@@ -8,6 +8,7 @@ import ManageExpenses from "./src/screens/ManageExpenses";
 import RecentExpenses from "./src/screens/RecentExpenses";
 import { GlobalStyles } from "./src/constants/styles";
 import { AntDesign } from "@expo/vector-icons";
+import IconButton from "./src/components/ui/IconButton";
 const Stack = createStackNavigator();
 const Bottom = createBottomTabNavigator();
 
@@ -27,6 +28,16 @@ const ExpenseOverview = () => {
         },
         tabBarActiveTintColor: GlobalStyles.colors.blackColor,
         tabBarInactiveTintColor: GlobalStyles.colors.whiteColor,
+        headerRight: ({ tintColor }) => {
+          return (
+            <IconButton
+              icon="plus"
+              size={20}
+              color={tintColor || GlobalStyles.colors.whiteColor}
+              onPress={() => {}}
+            />
+          );
+        },
       }}
     >
       <Bottom.Screen
