@@ -28,10 +28,12 @@ const Bottom = createBottomTabNavigator<RootBottomParamList>();
 // * Navigator에 screenOptions 를 사용하여 자식 스크린들에 공통 스타일링을 적용 할 수 있다
 // * headerStyle, tabBarStyle를 통해 헤더와 하단 탭바 스타일 적용 가능
 // * tintColor는 text color
+
+// ! screenOptions 에 객체를 바로 넣는것이 아니라 함수를 넣으면 파라미터에 navigation param을 받을 수 있다. -> 이것으로 state를 받던가 navigate기능을 하던가 할 수 있다.
 const ExpenseOverview = () => {
   return (
     <Bottom.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerStyle: {
           backgroundColor: GlobalStyles.colors.subColor3,
         },
@@ -47,11 +49,13 @@ const ExpenseOverview = () => {
               icon="plus"
               size={20}
               color={tintColor || GlobalStyles.colors.whiteColor}
-              onPress={() => {}}
+              onPress={() => {
+                navigation.navigate("ManageExpenses");
+              }}
             />
           );
         },
-      }}
+      })}
     >
       <Bottom.Screen
         name="AllExpenses"
@@ -83,7 +87,14 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: GlobalStyles.colors.subColor3,
+            },
+            headerTintColor: GlobalStyles.colors.blackColor,
+          }}
+        >
           <Stack.Screen
             name="ExpenseOverview"
             component={ExpenseOverview}
@@ -91,7 +102,14 @@ export default function App() {
               headerShown: false,
             }}
           />
-          <Stack.Screen name="ManageExpenses" component={ManageExpenses} />
+          <Stack.Screen
+            name="ManageExpenses"
+            component={ManageExpenses}
+            options={{
+              headerTitle: "비용 관리",
+              headerBackTitleVisible: false,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
