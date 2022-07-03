@@ -9,11 +9,13 @@ import RecentExpenses from "./src/screens/RecentExpenses";
 import { GlobalStyles } from "./src/constants/styles";
 import { AntDesign } from "@expo/vector-icons";
 import IconButton from "./src/components/ui/IconButton";
+import { ExpenseContextProvider } from "./src/store/expenses-context";
 
 export type RootStackParamList = {
   ManageExpenses: {
     expenseId: string;
   };
+  ExpenseOverview: undefined;
 };
 
 export type RootBottomParamList = {
@@ -88,31 +90,33 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: GlobalStyles.colors.subColor3,
-            },
-            headerTintColor: GlobalStyles.colors.blackColor,
-          }}
-        >
-          <Stack.Screen
-            name="ExpenseOverview"
-            component={ExpenseOverview}
-            options={{
-              headerShown: false,
+      <ExpenseContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: GlobalStyles.colors.subColor3,
+              },
+              headerTintColor: GlobalStyles.colors.blackColor,
             }}
-          />
-          <Stack.Screen
-            name="ManageExpenses"
-            component={ManageExpenses}
-            options={{
-              headerBackTitleVisible: false,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="ExpenseOverview"
+              component={ExpenseOverview}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="ManageExpenses"
+              component={ManageExpenses}
+              options={{
+                headerBackTitleVisible: false,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpenseContextProvider>
     </>
   );
 }

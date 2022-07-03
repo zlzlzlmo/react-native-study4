@@ -11,7 +11,7 @@ export interface IExpense {
   date: Date;
 }
 
-const DUMMY_EXPENSES: IExpense[] = [
+export const DUMMY_EXPENSES: IExpense[] = [
   {
     id: "el",
     description: "신발",
@@ -33,14 +33,15 @@ const DUMMY_EXPENSES: IExpense[] = [
 ];
 
 interface ExpensesOutputProps {
+  expenses: IExpense[];
   expensesPeriod: string;
 }
 
-const ExpensesOutput = ({ expensesPeriod }: ExpensesOutputProps) => {
+const ExpensesOutput = ({ expenses, expensesPeriod }: ExpensesOutputProps) => {
   return (
     <View style={styles.container}>
-      <ExpensesSummary expenses={DUMMY_EXPENSES} periodName={expensesPeriod} />
-      <ExpensesList expenses={DUMMY_EXPENSES} />
+      <ExpensesSummary expenses={expenses} periodName={expensesPeriod} />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 };
