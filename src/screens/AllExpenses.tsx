@@ -5,7 +5,13 @@ import { useExpenseContext } from "../store/expenses-context";
 
 const AllExpenses = () => {
   const { expenses } = useExpenseContext();
-  return <ExpensesOutput expensesPeriod="Total" expenses={expenses} />;
+  return (
+    <ExpensesOutput
+      expensesPeriod="Total"
+      expenses={expenses}
+      fallbackText="소비한 비용이 없습니다."
+    />
+  );
 };
 
 export default AllExpenses;

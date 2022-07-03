@@ -6,10 +6,12 @@ import IconButton from "../components/ui/IconButton";
 import { Entypo } from "@expo/vector-icons";
 import { GlobalStyles } from "../constants/styles";
 import Button from "../components/ui/Button";
+import { useExpenseDispatch } from "../store/expenses-context";
 
 type Props = StackScreenProps<RootStackParamList, "ManageExpenses">;
 
 const ManageExpenses = ({ route, navigation }: Props) => {
+  const dispatch = useExpenseDispatch();
   const editedExpenseId = route.params?.expenseId;
 
   // * value가 있으면 true 없으면 false 반환
@@ -22,6 +24,7 @@ const ManageExpenses = ({ route, navigation }: Props) => {
   }, [navigation, isEditing]);
 
   const deleteExpenseHandler = () => {
+    dispatch({ type: "DELETE", payload: editedExpenseId });
     navigation.goBack();
   };
 
