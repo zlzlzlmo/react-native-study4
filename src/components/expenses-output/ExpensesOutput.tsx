@@ -30,6 +30,12 @@ export const DUMMY_EXPENSES: IExpense[] = [
     amount: 25000,
     date: new Date("2022-06-05"),
   },
+  {
+    id: "e4",
+    description: "맥북",
+    amount: 2500000,
+    date: new Date("2022-07-01"),
+  },
 ];
 
 interface ExpensesOutputProps {
